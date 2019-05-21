@@ -1,0 +1,19 @@
+[[plugins]]
+repo = 'hynek/vim-python-pep8-indent'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = 'html'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'

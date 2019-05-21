@@ -1,0 +1,126 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+'''
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ }
+call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
+
+nnoremap <silent> <space>lc :call LanguageClient_contexMenu()<CR>
+nnoremap <silent> <space>lr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <space>ld :call LanguageClient#textDocument_definition()<CR>
+'''
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+let g:ale_open_list = 1
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '!'
+let g:ale_linters = {
+  \ 'python': ['pyflakes']
+  \ }
+let g:ale_fixers = {
+  \ 'python': ['autopep8']
+  \ }
+'''
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'tpope/vim-markdown'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'ctrlpvim/ctrlp.vim'
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+hook_add = '''
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
+'''
+
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_add = '''
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+
