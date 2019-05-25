@@ -17,3 +17,13 @@ on_ft = 'html'
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = 'vim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_ft = 'fish'
+<`0`>
+
