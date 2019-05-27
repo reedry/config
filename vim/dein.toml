@@ -122,3 +122,8 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
 
+[[plugins]]
+repo = 'cespare/vim-toml'
+
+[[plugins]]
+repo = 'dag/vim-fish'
