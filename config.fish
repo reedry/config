@@ -1,6 +1,6 @@
 set -gx PYENV_ROOT $HOME/.pyenv
 set -x PATH $PATH $PYENV_ROOT/bin
-pyenv init - | source
+status --is-interactive; and source (pyenv init -|psub)
 
 set -x PATH $PATH $HOME/.cargo/bin
 
