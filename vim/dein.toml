@@ -42,9 +42,9 @@ let g:LanguageClient_serverCommands = {
     \ }
 call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
 
-nnoremap <silent> <space>lc :call LanguageClient_contexMenu()<CR>
-nnoremap <silent> <space>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <space>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>lc :call LanguageClient_contexMenu()<CR>
+nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
 '''
 
 [[plugins]]
@@ -73,8 +73,6 @@ let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
-let g:ale_sign_error = 'x'
-let g:ale_sign_warning = '!'
 let g:ale_linters = {
   \ 'python': ['pyflakes']
   \ }

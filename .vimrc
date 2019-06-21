@@ -177,4 +177,8 @@ let g:vim_jsx_pretty_colorful_config = 1 " default 0
 "
 "}}}
 
-
+" Load local settings {{{
+if filereadable(expand($HOME.'/.local.vim'))
+  source $HOME/.local.vim
+endif
+"}}}
