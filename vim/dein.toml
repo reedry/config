@@ -42,9 +42,9 @@ let g:LanguageClient_serverCommands = {
     \ }
 call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
 
-nnoremap <silent> <leader>lc :call LanguageClient_contexMenu()<CR>
-nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
-nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>lcc :call LanguageClient_contexMenu()<CR>
+nnoremap <silent> <leader>lcr :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> <leader>lcd :call LanguageClient#textDocument_definition()<CR>
 '''
 
 [[plugins]]

@@ -106,15 +106,6 @@ set pyxversion=3
 "}}}
 
 " Key Mappings"{{{
-nnoremap [ctrlp] <Nop>
-nmap <Space>c [ctrlp]
-nnoremap <silent> [ctrlp]f :<C-u>CtrlP<CR>
-nnoremap <silent> [ctrlp]m :<C-u>CtrlPMRUFiles<CR>
-nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
-nnoremap <silent> [ctrlp]x :<C-u>CtrlPMixed<CR>
-nnoremap <silent> [ctrlp]y :<C-u>CtrlPYankRound<CR>
-nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
-
 nnoremap [tags] <Nop>
 nmap <Space>t [tags]
 nnoremap <silent> [tags]j <C-]>
