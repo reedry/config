@@ -98,28 +98,10 @@ repo = 'tpope/vim-fugitive'
 repo = 'tpope/vim-markdown'
 
 [[plugins]]
-repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
-
-[[plugins]]
-repo = 'LeafCage/yankround.vim'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
-repo = 'altercation/vim-colors-solarized'
-
-[[plugins]]
-repo = 'joshdick/onedark.vim'
-hook_add = '''
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
-'''
-
+repo = 'chriskempson/base16-vim'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'

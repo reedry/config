@@ -47,8 +47,12 @@ endif
 
 " UI"{{{
 set t_Co=256
-colorscheme onedark
+let base16colorspace=256
+source ~/.vimrc_background
 set background=dark
+let g:lightline = {
+  \ 'colorscheme': 'one',
+  \ }
 
 set list
 set listchars=tab:¦-,trail:˽
