@@ -46,6 +46,7 @@ if has('persistent_undo')
 endif
 
 " UI"{{{
+set termguicolors
 set t_Co=256
 let base16colorspace=256
 source ~/.vimrc_background
