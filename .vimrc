@@ -65,7 +65,7 @@ let g:indentLine_leadingSpaceChar = '·' "also can use: ˽˰··
 let g:indentLine_leadingSpaceEnabled = 1
 "let g:indentLine_setConceal = 0
 
-
+set scrolloff=3
 set laststatus=2
 set cmdheight=2
 set showcmd
