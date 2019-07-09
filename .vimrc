@@ -41,7 +41,7 @@ set autoindent
 set smartindent
 
 if has('persistent_undo')
-  set undodir=~/.vim/undo
+  set undodir=~/.cache/vim/undo " You should mkdir -p ~/.cache/vim/undo
   set undofile
 endif
 
