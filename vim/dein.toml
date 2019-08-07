@@ -85,6 +85,14 @@ if executable('typescript-language-server')
       \ 'whitelist': ['typescript', 'typescript.tsx'],
       \ })
 endif
+if executable('elm-language-server')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'elm-language-server',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'elm-language-server --stdio']},
+      \ 'whitelist': ['elm'],
+      \ })
+endif
+
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_signs_error = {'text': '✗'}
