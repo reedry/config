@@ -6,48 +6,6 @@ repo = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-# [[plugins]]
-# repo = 'roxma/nvim-yarp'
-#
-# [[plugins]]
-# repo = 'roxma/vim-hug-neovim-rpc'
-#
-# [[plugins]]
-# repo = 'Shougo/deoplete.nvim'
-# hook_add = '''
-# let g:deoplete#enable_at_startup = 1
-# inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-# function! s:my_cr_function()
-#   return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-#   " For no inserting <CR> key.
-#   "return pumvisible() ? "\<C-y>" : "\<CR>"
-# endfunction
-# " <TAB>: completion.
-# inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-# " <C-h>, <BS>: close popup and delete backword char.
-# inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-# inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-# '''
-#
-# [[plugins]]
-# repo = 'autozimu/LanguageClient-neovim'
-# rev = 'next'
-# build = 'bash install.sh'
-# hook_add = '''
-# let g:LanguageClient_serverCommands = {
-#     \ 'python': ['pyls'],
-#     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-#     \ }
-# call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
-#
-# nnoremap <silent> <leader>lcc :call LanguageClient_contexMenu()<CR>
-# nnoremap <silent> <leader>lcr :call LanguageClient#textDocument_rename()<CR>
-# nnoremap <silent> <leader>lcd :call LanguageClient#textDocument_definition()<CR>
-# '''
-
-[[plugins]]
 repo = 'prabirshrestha/async.vim'
 
 [[plugins]]
@@ -61,6 +19,7 @@ if executable('rls')
       \ 'whitelist': ['rust'],
       \ })
 endif
+
 if executable('pyls')
   au User lsp_setup call lsp#register_server({
       \ 'name': 'pyls',
@@ -68,6 +27,7 @@ if executable('pyls')
       \ 'whitelist': ['python'],
       \ })
 endif
+
 if executable('ccls')
   au User lsp_setup call lsp#register_server({
     \ 'name': 'ccls',
@@ -77,6 +37,7 @@ if executable('ccls')
     \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
     \ })
 endif
+
 if executable('typescript-language-server')
   au User lsp_setup call lsp#register_server({
       \ 'name': 'typescript-language-server',
@@ -85,10 +46,17 @@ if executable('typescript-language-server')
       \ 'whitelist': ['typescript', 'typescript.tsx'],
       \ })
 endif
+
 if executable('elm-language-server')
   au User lsp_setup call lsp#register_server({
       \ 'name': 'elm-language-server',
       \ 'cmd': {server_info->[&shell, &shellcmdflag, 'elm-language-server --stdio']},
+      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(),'elm.json'))},
+      \ 'initialization_options': {
+      \   'elmPath': 'elm',
+      \   'elmFormatPath': 'elm-format',
+      \   'elmTestPath': 'elm-test'
+      \ },
       \ 'whitelist': ['elm'],
       \ })
 endif
@@ -96,7 +64,7 @@ endif
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_signs_error = {'text': '✗'}
-let g:lsp_signs_warning = {'text': '‼'}
+let g:lsp_signs_warning = {'text': '‼', 'icon': '/path/to/some/icon'}
 '''
 
 [[plugins]]

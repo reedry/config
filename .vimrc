@@ -160,8 +160,11 @@ autocmd vimrc FileType python setl tabstop=4 expandtab shiftwidth=4 softtabstop=
 "
 "}}}
 
+" elm"{{{
+autocmd vimrc FileType elm setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
+"
+"}}}
 " javascript"{{{
-autocmd vimrc FileType javascript setl foldmethod=syntax
 let g:vim_json_syntax_conceal = 0
 let g:jsdoc_allow_input_prompt = 1
 let g:jsdoc_tags = {}
