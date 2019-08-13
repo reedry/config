@@ -127,6 +127,12 @@ nnoremap [git]s :Gstatus<CR>
 nnoremap [git]d :Gdiff<CR>
 nnoremap [git]l :Glog<CR>
 
+nnoremap [buf] <Nop>
+nmap <Space>b [buf]
+nnoremap [buf]n :<C-u>bnext<CR>
+nnoremap [buf]p :<C-u>bprevious<CR>
+nnoremap [buf]l :<C-u>ls<CR>
+
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
