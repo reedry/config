@@ -170,6 +170,14 @@ autocmd vimrc FileType python setl tabstop=4 expandtab shiftwidth=4 softtabstop=
 autocmd vimrc FileType elm setl tabstop=4 expandtab shiftwidth=4 softtabstop=4
 "
 "}}}
+
+" scheme{{{
+autocmd vimrc FileType scheme
+\   if &l:omnifunc == ''
+\ |   setlocal omnifunc=syntaxcomplete#Complete
+\ | endif
+"}}}
+
 " javascript"{{{
 let g:vim_json_syntax_conceal = 0
 let g:jsdoc_allow_input_prompt = 1
