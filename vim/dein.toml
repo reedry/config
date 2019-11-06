@@ -70,6 +70,14 @@ if executable('elm-language-server')
       \ })
 endif
 
+if executable('ocaml-language-server')
+  au User lsp_setup call lsp#register_server({
+      \ 'name': 'ocaml-language-server',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'opam config exec -- ocaml-language-server --stdio']},
+      \ 'whitelist': ['reason', 'ocaml'],
+      \ })
+endif
+
 let g:lsp_signs_enabled = 1
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_signs_error = {'text': '✗'}
