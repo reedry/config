@@ -145,19 +145,26 @@ au FileType qf nnoremap <silent><buffer>q :quit<CR>
 '''
 
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'dense-analysis/ale'
 hook_add = '''
-let g:ale_lint_on_text_changed = 0
+let g:ale_disable_lsp = 1
+let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
+let g:ale_linters_explicit = 1
 let g:ale_linters = {
-  \ 'python': ['pyflakes']
+  \ 'python': ['pyflakes'],
+  \ 'javascript': ['eslint'],
+  \ 'typescript': ['eslint'],
+  \ 'typescriptreact': ['eslint'],
   \ }
 let g:ale_fixers = {
   \ 'python': ['autopep8'],
   \ 'rust': ['rustfmt'],
+  \ 'javascript': ['prettier'],
   \ 'typescript': ['prettier'],
+  \ 'typescriptreact': ['prettier'],
   \ }
 '''
 
