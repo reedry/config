@@ -175,6 +175,11 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+let g:lightline = {
+  \ 'colorscheme': 'one',
+  \ }
+'''
 
 [[plugins]]
 repo = 'chriskempson/base16-vim'

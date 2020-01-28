@@ -49,9 +49,6 @@ endif
 let base16colorspace=256
 source ~/.vimrc_background
 set background=dark
-let g:lightline = {
-  \ 'colorscheme': 'one',
-  \ }
 
 set list
 set listchars=tab:¦-,trail:˽
