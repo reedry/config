@@ -1,3 +1,5 @@
+set -x LANG ja_JP.UTF-8
+
 set -gx PYENV_ROOT $HOME/.pyenv
 set -x PATH $PATH $PYENV_ROOT/bin
 status --is-interactive; and source (pyenv init -|psub)
@@ -16,3 +18,7 @@ end
 
 # opam configuration
 source /home/ry/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+alias ocaml="rlwrap ocaml"
+
+set -x PATH $PATH $HOME/.local/bin
+set -x PATH $PATH $HOME/.roswell/bin

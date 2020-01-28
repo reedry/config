@@ -188,7 +188,7 @@ let g:vim_jsx_pretty_colorful_config = 1 " default 0
 "
 " OCaml{{{
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
 "}}}
 "}}}
 
