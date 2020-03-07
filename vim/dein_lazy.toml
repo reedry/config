@@ -3,10 +3,6 @@ repo = 'hynek/vim-python-pep8-indent'
 on_ft = 'python'
 
 [[plugins]]
-repo = 'pangloss/vim-javascript'
-on_ft = 'javascript'
-
-[[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = 'rust'
 
@@ -17,3 +13,7 @@ on_ft = 'html'
 [[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = 'vim'
+
+[[plugins]]
+repo = 'styled-components/vim-styled-components'
+on_ft = 'typescriptreact'
