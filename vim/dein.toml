@@ -163,6 +163,7 @@ let g:ale_fixers = {
   \ 'python': ['autopep8'],
   \ 'rust': ['rustfmt'],
   \ 'javascript': ['prettier'],
+  \ 'json': ['prettier'],
   \ 'typescript': ['prettier'],
   \ 'typescriptreact': ['prettier'],
   \ }
