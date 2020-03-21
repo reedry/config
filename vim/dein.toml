@@ -162,6 +162,7 @@ let g:ale_linters = {
 let g:ale_fixers = {
   \ 'python': ['autopep8'],
   \ 'rust': ['rustfmt'],
+  \ 'html': ['prettier'],
   \ 'javascript': ['prettier'],
   \ 'json': ['prettier'],
   \ 'typescript': ['prettier'],
