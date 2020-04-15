@@ -70,10 +70,10 @@ if executable('elm-language-server')
       \ })
 endif
 
-if executable('ocamlmerlin-lsp')
+if executable('ocamllsp')
   au User lsp_setup call lsp#register_server({
-      \ 'name': 'merlin-lsp',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'opam exec -- ocamlmerlin-lsp']},
+      \ 'name': 'ocamllsp',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'opam exec -- ocamllsp']},
       \ 'whitelist': ['ocaml'],
       \ })
 endif

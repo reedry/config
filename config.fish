@@ -16,9 +16,8 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
-# opam configuration
-source /home/ry/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-alias ocaml="rlwrap ocaml"
-
 set -x PATH $PATH $HOME/.local/bin
 set -x PATH $PATH $HOME/.roswell/bin
+
+# opam configuration
+source /home/ry/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
