@@ -21,3 +21,6 @@ set -x PATH $PATH $HOME/.roswell/bin
 
 # opam configuration
 source /home/ry/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+# fish_color
+set fish_color_command blue
