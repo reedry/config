@@ -20,15 +20,6 @@ if executable('rls')
       \ })
 endif
 
-if executable('ra_lsp_server')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'rust_analyzer',
-      \ 'cmd': {server_info->['ra_lsp_server']},
-      \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-      \ 'whitelist': ['rust'],
-      \ })
-endif
-
 if executable('pyls')
   au User lsp_setup call lsp#register_server({
       \ 'name': 'pyls',
