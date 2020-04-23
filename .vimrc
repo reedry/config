@@ -116,6 +116,11 @@ nmap <Space>l [loc]
 nnoremap <silent> [loc]n :<C-u>lnext<CR>
 nnoremap <silent> [loc]p :<C-u>lprev<CR>
 
+nnoremap [lsp] <Nop>
+nmap <Space>s [lsp]
+nnoremap <silent> [lsp]s :<C-u>LspDocumentDiagnostics<CR>
+nnoremap <silent> [lsp]r :<C-u>LspRename<CR>
+
 nnoremap [git] <Nop>
 nmap <Space>g [git]
 nnoremap [git]a :Gwrite<CR>
