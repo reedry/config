@@ -5,8 +5,8 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 let s:dein_dir = expand('~/.cache/dein')
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
-  call dein#load_toml('~/dev/config/vim/dein.toml')
-  call dein#load_toml('~/dev/config/vim/dein_lazy.toml', {'lazy': 1})
+  call dein#load_toml('~/.vim/dein.toml')
+  call dein#load_toml('~/.vim/dein_lazy.toml', {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
