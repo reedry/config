@@ -17,5 +17,16 @@ repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
 [[plugins]]
+repo = 'prabirshrestha/asyncomplete-necovim.vim'
+on_ft = 'vim'
+hook_source = '''
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
+      \ 'name': 'necovim',
+      \ 'whitelist': ['vim'],
+      \ 'completor': function('asyncomplete#sources#necovim#completor'),
+      \ }))
+'''
+
+[[plugins]]
 repo = 'styled-components/vim-styled-components'
 on_ft = 'typescriptreact'
