@@ -113,6 +113,7 @@ nnoremap <silent> [tags]b <C-t>
 
 nnoremap [loc] <Nop>
 nmap <Space>l [loc]
+nnoremap <silent> [loc]c :<C-u>lclose<CR>
 nnoremap <silent> [loc]n :<C-u>lnext<CR>
 nnoremap <silent> [loc]p :<C-u>lprev<CR>
 
