@@ -6,9 +6,7 @@ status --is-interactive; and source (pyenv init -|psub)
 
 set -x PATH $PATH $HOME/.cargo/bin
 
-set -x PREFIX $HOME/.n
-set -x N_PREFIX $HOME/.n
-set -x PATH $PATH $N_PREFIX/bin
+set -x PATH $PATH $HOME/.yarn/bin
 
 # Base16 Shell
 if status --is-interactive
