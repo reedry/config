@@ -30,3 +30,14 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
 [[plugins]]
 repo = 'styled-components/vim-styled-components'
 on_ft = 'typescriptreact'
+
+[[plugins]]
+repo = 'tyru/eskk.vim'
+on_ft = 'markdown'
+hook_add = '''
+let g:eskk#large_dictionary = {
+      \	'path': "~/.eskk/SKK-JISYO.L",
+      \	'sorted': 1,
+      \	'encoding': 'euc-jp',
+      \}
+'''

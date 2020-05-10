@@ -3,10 +3,14 @@ let g:lightline = {
   \   'active': {
   \     'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-  \             [ 'errors', 'warnings' ] ]
-  \    },
+  \             [ 'errors', 'warnings' ] ],
+  \     'right': [ [ 'lineinfo' ],
+  \                [ 'percent' ],
+  \                [ 'eskk', 'fileformat', 'fileencoding', 'filetype' ] ]
+  \   },
   \   'component_function': {
-  \     'gitbranch': 'LightLineBranch'
+  \     'gitbranch': 'LightLineBranch',
+  \     'eskk': 'LightLineEskk'
   \   },
   \   'component_expand': {
   \     'errors': 'LightLineErrors',
@@ -34,6 +38,14 @@ let g:lightline = {
 function! LightLineBranch() abort
   let l:branch = FugitiveHead()
   return l:branch == '' ? '' : printf('⌥ %s', l:branch)
+endfunction
+
+function! LightLineEskk() abort
+  if !eskk#is_enabled()
+    return ''
+  endif
+  let l:modes = { 'hira': 'あ', 'kata': 'ア', 'ascii': 'A', 'zenei': '全' }
+  return get(l:modes, eskk#get_mode(), '')
 endfunction
 
 function! LightLineErrors() abort
