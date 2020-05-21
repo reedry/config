@@ -6,6 +6,9 @@ status --is-interactive; and source (pyenv init -|psub)
 
 set -x PATH $PATH $HOME/.cargo/bin
 
+set -gx GOPATH $HOME/.go
+set -x PATH $PATH $GOPATH/bin
+
 set -x PATH $PATH $HOME/.yarn/bin
 
 # Base16 Shell
