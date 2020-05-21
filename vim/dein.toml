@@ -27,6 +27,7 @@ if executable('pyls')
       \ 'name': 'pyls',
       \ 'cmd': {server_info->['pyls']},
       \ 'whitelist': ['python'],
+      \ 'workspace_config': {'pyls': {'plugins': {'pyls_mypy': {'enabled': v:true}}}}
       \ })
 endif
 
@@ -159,7 +160,6 @@ let g:ale_fix_on_save = 1
 let g:ale_open_list = 1
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
-  \ 'python': ['pyflakes'],
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint'],
   \ 'typescriptreact': ['eslint'],
