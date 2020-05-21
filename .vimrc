@@ -58,7 +58,7 @@ let g:indentLine_char = '¦' "|¦┆│
 let g:indentLine_leadingSpaceChar = '·' "also can use: ˽˰··
 "let g:indentLine_showFirstIndentLevel = 1
 let g:indentLine_leadingSpaceEnabled = 1
-"let g:indentLine_setConceal = 0
+let g:indentLine_setConceal = 0
 
 set scrolloff=3
 set laststatus=2
