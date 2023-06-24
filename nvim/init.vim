@@ -21,7 +21,7 @@ endif
 
 let s:dein_toml = '~/.config/vim/dein.toml'
 let s:dein_lazy_toml = '~/.config/vim/dein_lazy.toml'
-let s:deinft_toml = '~/.config/deinft.toml'
+let s:deinft_toml = '~/.config/vim/deinft.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir, [
         \ expand('<sfile>'), s:dein_toml, s:dein_lazy_toml, s:deinft_toml
@@ -68,6 +68,8 @@ if has('persistent_undo')
 endif
 
 " UI"{{{
+colorscheme PaperColor
+set background=dark
 
 set list
 set listchars=tab:¦-,trail:˽

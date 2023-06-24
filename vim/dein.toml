@@ -195,9 +195,6 @@ source ~/dev/config/vim/lightline.rc.vim
 '''
 
 [[plugins]]
-repo = 'chriskempson/base16-vim'
-
-[[plugins]]
 repo = 'Yggdroot/indentLine'
 
 [[plugins]]
@@ -219,3 +216,6 @@ repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
 repo = 'lilydjwg/colorizer'
+
+[[plugins]]
+repo = 'NLKNguyen/papercolor-theme'
