@@ -41,11 +41,13 @@ function! LightLineBranch() abort
 endfunction
 
 function! LightLineEskk() abort
-  if !eskk#is_enabled()
-    return ''
+  if exists('eskk')
+    if !eskk#is_enabled()
+      return ''
+    endif
+    let l:modes = { 'hira': 'あ', 'kata': 'ア', 'ascii': 'A', 'zenei': '全' }
+    return get(l:modes, eskk#get_mode(), '')
   endif
-  let l:modes = { 'hira': 'あ', 'kata': 'ア', 'ascii': 'A', 'zenei': '全' }
-  return get(l:modes, eskk#get_mode(), '')
 endfunction
 
 function! LightLineErrors() abort
