@@ -68,9 +68,6 @@ if has('persistent_undo')
 endif
 
 " UI"{{{
-let base16colorspace=256
-source ~/.vimrc_background
-set background=dark
 
 set list
 set listchars=tab:¦-,trail:˽
