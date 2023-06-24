@@ -7,6 +7,8 @@ set -x LANG ja_JP.UTF-8
 
 set -x PATH $PATH $HOME/.cargo/bin
 
+set -x PATH $PATH $HOME/.deno/bin
+
 set -gx GOPATH $HOME/.go
 set -x PATH $PATH $GOPATH/bin
 
