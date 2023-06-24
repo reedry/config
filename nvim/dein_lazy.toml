@@ -1,0 +1,43 @@
+# vim:ft=vim
+
+[[plugins]]
+repo = 'hynek/vim-python-pep8-indent'
+on_ft = 'python'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = 'html'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-necovim.vim'
+on_ft = 'vim'
+hook_source = '''
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#necovim#get_source_options({
+      \ 'name': 'necovim',
+      \ 'whitelist': ['vim'],
+      \ 'completor': function('asyncomplete#sources#necovim#completor'),
+      \ }))
+'''
+
+[[plugins]]
+repo = 'styled-components/vim-styled-components'
+on_ft = 'typescriptreact'
+
+[[plugins]]
+repo = 'tyru/eskk.vim'
+on_ft = 'markdown'
+hook_add = '''
+let g:eskk#large_dictionary = {
+      \	'path': "~/.eskk/SKK-JISYO.L",
+      \	'sorted': 1,
+      \	'encoding': 'euc-jp',
+      \}
+'''

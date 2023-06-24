@@ -15,6 +15,9 @@ set -x PATH $PATH $HOME/.yarn/bin
 set -x PATH $PATH $HOME/.local/bin
 set -x PATH $PATH $HOME/.roswell/bin
 
+# Alias
+alias vim=nvim
+
 # opam configuration
 source /home/ry/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 
