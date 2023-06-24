@@ -3,134 +3,95 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# LSP Settings "{{{
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
-repo = 'prabirshrestha/async.vim'
-
-[[plugins]]
-repo = 'prabirshrestha/vim-lsp'
+repo = 'neovim/nvim-lspconfig'
 hook_add = '''
-if executable('rls')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'rls',
-      \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-      \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
-      \ 'whitelist': ['rust'],
+lua << EOF
+local nvim_lsp = require('lspconfig')
+
+nvim_lsp.rust_analyzer.setup{}
+
+EOF
+'''
+# "}}}
+
+# Auto Completion "{{{
+[[plugins]]
+repo = 'vim-denops/denops.vim'
+
+[[plugins]]
+repo = 'Shougo/ddc.vim'
+hook_add = '''
+" Customize global settings
+
+" You must set the default ui.
+call ddc#custom#patch_global('ui', 'native')
+
+" Use around source.
+call ddc#custom#patch_global('sources', ['around', 'nvim-lsp'])
+
+" Use matcher_head and sorter_rank.
+call ddc#custom#patch_global('sourceOptions', {
+      \   '_': {
+      \     'matchers': ['matcher_head'],
+      \     'sorters': ['sorter_rank'],
+      \   },
+      \   'nvim-lsp': {
+      \     'mark': 'lsp',
+      \     'forceCompletionPattern': '\.\w*|:\w*|->\w*',
+      \   },
       \ })
-endif
 
-if executable('pyls')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'pyls',
-      \ 'cmd': {server_info->['pyls']},
-      \ 'whitelist': ['python'],
-      \ 'workspace_config': {'pyls': {'plugins': {'pyls_mypy': {'enabled': v:true}}}}
+" Change source options
+call ddc#custom#patch_global('sourceOptions', #{
+      \   around: #{ mark: 'A' },
       \ })
-endif
-
-if executable('ccls')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'ccls',
-    \ 'cmd': {server_info->['ccls']},
-    \ 'root_uri': {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'compile_commands.json'))},
-    \ 'initialization_options': {'cache':{'directory': '/tmp/ccls/cache' }},
-    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp', 'cc'],
-    \ })
-endif
-
-if executable('typescript-language-server')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'typescript-language-server',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-      \ 'whitelist': ['typescript', 'typescript.tsx', 'typescriptreact'],
+call ddc#custom#patch_global('sourceParams', #{
+      \   around: #{ maxSize: 500 },
       \ })
-endif
 
-if executable('typescript-language-server')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'javascript support using typescript-language-server',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
-      \ 'whitelist': ['javascript', 'javascriptreact'],
+" Customize settings on a filetype
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sources',
+      \ ['around', 'clangd'])
+call ddc#custom#patch_filetype(['c', 'cpp'], 'sourceOptions', #{
+      \   clangd: #{ mark: 'C' },
       \ })
-endif
-
-if executable('gopls')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'gopls',
-        \ 'cmd': {server_info->['gopls']},
-        \ 'whitelist': ['go'],
-        \ })
-  autocmd BufWritePre *.go LspDocumentFormatSync
-endif
-
-if executable('elm-language-server')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'elm-language-server',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'elm-language-server --stdio']},
-      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(),'elm.json'))},
-      \ 'initialization_options': {
-      \   'elmPath': 'elm',
-      \   'elmFormatPath': 'elm-format',
-      \   'elmTestPath': 'elm-test'
-      \ },
-      \ 'whitelist': ['elm'],
+call ddc#custom#patch_filetype('markdown', 'sourceParams', #{
+      \   around: #{ maxSize: 100 },
       \ })
-endif
+call ddc#custom#patch_filetype('vim', 'sources', ['necovim'])
 
-if executable('ocamllsp')
-  au User lsp_setup call lsp#register_server({
-      \ 'name': 'ocamllsp',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'opam exec -- ocamllsp']},
-      \ 'whitelist': ['ocaml'],
-      \ })
-endif
+" Mappings
 
-let g:lsp_signs_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_signs_error = {'text': ' ✗'} "⨯×
-let g:lsp_signs_warning = {'text': ' ‼'} "⁉
-let g:lsp_signs_information = {'text': ' ⅈ'} "✓
-let g:lsp_signs_hint = {'text': ' ≻'} "ℍ»‣≽⊳
+" <TAB>: completion.
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? '<C-n>' :
+\ (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ?
+\ '<TAB>' : ddc#map#manual_complete()
+
+" <S-TAB>: completion back.
+inoremap <expr><S-TAB>  pumvisible() ? '<C-p>' : '<C-h>'
+
+" Use ddc.
+call ddc#enable()
 '''
 
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete.vim'
-hook_add = '''
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup() : "\<CR>"
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-set completeopt+=preview
-'''
+repo = 'Shougo/ddc-ui-native'
 
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete-lsp.vim'
+repo = 'Shougo/ddc-source-around'
 
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete-neosnippet.vim'
-hook_add = '''
-call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
-      \ 'name': 'neosnippet',
-      \ 'whitelist': ['*'],
-      \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
-      \ }))
-'''
+repo = 'Shougo/ddc-matcher_head'
 
 [[plugins]]
-repo = 'prabirshrestha/asyncomplete-file.vim'
-hook_add = '''
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
-      \ 'name': 'file',
-      \ 'whitelist': ['*'],
-      \ 'priority': 10,
-      \ 'completor': function('asyncomplete#sources#file#completor')
-      \ }))
-'''
+repo = 'Shougo/ddc-sorter_rank'
+
+[[plugins]]
+repo = 'Shougo/ddc-source-nvim-lsp'
+# "}}}
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -191,7 +152,7 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-source ~/dev/config/vim/lightline.rc.vim
+source ~/.config/nvim/lightline.rc.vim
 '''
 
 [[plugins]]
