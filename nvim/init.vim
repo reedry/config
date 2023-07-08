@@ -127,6 +127,8 @@ set pyxversion=3
 "}}}
 
 " Key Mappings"{{{
+tnoremap <Esc> <C-\><C-n>
+
 nnoremap [tags] <Nop>
 nmap <Space>t [tags]
 nnoremap <silent> [tags]j <C-]>
@@ -140,8 +142,9 @@ nnoremap <silent> [loc]p :<C-u>lprev<CR>
 
 nnoremap [lsp] <Nop>
 nmap <Space>s [lsp]
-nnoremap <silent> [lsp]s :<C-u>LspDocumentDiagnostics<CR>
-nnoremap <silent> [lsp]r :<C-u>LspRename<CR>
+nnoremap <silent> [lsp]s :<C-u>lua vim.diagnostic.open_float()<CR>
+nnoremap <silent> [lsp]h :<C-u>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> [lsp]r :<C-u>LspRestart<CR>
 
 nnoremap [git] <Nop>
 nmap <Space>g [git]
