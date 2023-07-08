@@ -97,8 +97,8 @@ set wildmenu
 set formatoptions-=ro
 set mouse=
 set hidden
-set colorcolumn=80
 set textwidth=80
+set colorcolumn=+1
 set previewheight=5
 set signcolumn=yes
 "}}}
@@ -213,6 +213,10 @@ let g:vim_jsx_pretty_colorful_config = 1 " default 0
 " OCaml{{{
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 " execute "set rtp+=" . g:opamshare . "/merlin/vim"
+"}}}
+"
+" Rust{{{
+autocmd vimrc FileType rust setl textwidth=100
 "}}}
 "}}}
 
