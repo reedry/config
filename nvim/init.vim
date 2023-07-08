@@ -185,6 +185,8 @@ nnoremap <silent> <Space>nh :<C-u>noh<CR>
 
 nnoremap <silent> <Space>jd :<C-u>JsDoc<CR>
 
+command! SourceRc :source ~/.config/nvim/init.vim
+
 "}}}
 
 " Languages"{{{
