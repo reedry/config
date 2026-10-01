@@ -1,13 +1,15 @@
 # .zshrc
 
-source ~/.zplug/init.zsh
+if [ -f ~/.zplug/init.zsh ]; then
+  source ~/.zplug/init.zsh
 
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2
-zplug 'zsh-users/zsh-completions'
-zplug 'zsh-users/zsh-autosuggestions'
-zplug 'zplug/zplug'
+  zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+  zplug 'zsh-users/zsh-completions'
+  zplug 'zsh-users/zsh-autosuggestions'
+  zplug 'zplug/zplug'
 
-zplug load
+  zplug load
+fi
 
 precmd() {
   echo -ne "\033]0;${USER}@${HOST} ${PWD}\007"
@@ -17,7 +19,14 @@ autoload -Uz colors
 colors
 
 # source ~/.zsh/sol.dark
-eval `dircolors ~/.zsh/dircolors.ansi-dark`
+# macOS には GNU coreutils (brew install coreutils) が g 付きで入る
+case "$(uname)" in
+  Darwin) _dircolors=gdircolors; _ls=gls ;;
+  *)      _dircolors=dircolors;  _ls=ls ;;
+esac
+if command -v $_dircolors 1>/dev/null 2>&1; then
+  eval `$_dircolors ~/.zsh/dircolors.ansi-dark`
+fi
 
 autoload -Uz add-zsh-hook
 source ~/.zsh/myprompt.zsh
@@ -54,7 +63,11 @@ setopt sharehistory
 setopt nobeep
 setopt ignore_eof
 
-alias ls='ls --color=auto'
+if command -v $_ls 1>/dev/null 2>&1 && $_ls --color=auto / >/dev/null 2>&1; then
+  alias ls="$_ls --color=auto"
+else
+  alias ls='ls -G'
+fi
 alias pd='popd'
 alias vi='vim'
 alias ...='cd ../..'
@@ -77,3 +90,7 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+if command -v mise 1>/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
